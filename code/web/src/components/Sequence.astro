@@ -12,14 +12,9 @@ const outcomes = [
 ---
 
 <div id="sequence" class="border-b border-rule">
-  <div class="section" style="max-width: 1120px; padding-top: 96px; padding-bottom: 72px;">
-    <h2
-      class="font-bold tracking-tight text-ink"
-      style="font-size: clamp(32px, 4.4vw, 46px); line-height: 1.08; letter-spacing: -0.04em;"
-    >
-      What happens to one request
-    </h2>
-    <p class="mt-4 max-w-[600px] text-[17px] leading-relaxed text-muted">
+  <div class="section-wide pb-18 pt-24">
+    <h2 class="h2-display">What happens to one request</h2>
+    <p class="lede mt-4">
       Not a pipeline diagram — this is the actual sequence, in the order it runs.
     </p>
 
@@ -55,8 +50,8 @@ const outcomes = [
           {
             outcomes.map((o, i) => (
               <div
-                class={`flex flex-wrap gap-2 gap-x-6 py-4 ${i === 0 ? "pb-4 pt-0" : "border-t"}`}
-                style={i === 0 ? undefined : "border-color: var(--color-rule-2);"}
+                class={`flex flex-wrap gap-2 gap-x-6 py-4 ${i === 0 ? "pb-4 pt-0" : "border-t border-rule-2"}`}
+                
               >
                 <div class="mono flex flex-[0_0_150px] items-center gap-2.5 text-[13px] font-medium leading-5">
                   <span aria-hidden="true" class="block h-[9px] w-[9px] rounded-full" style={`background:${o.dot}`} />

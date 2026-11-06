@@ -1,67 +1,58 @@
 ---
 ---
 
-<div class="border-b border-rule">
-  <div class="section py-24" style="max-width: 1120px;">
-    <h2
-      class="font-bold tracking-tight text-ink"
-      style="font-size: clamp(32px, 4.4vw, 46px); line-height: 1.08; letter-spacing: -0.04em;"
-    >
-      A dead end becomes a conversation.
-    </h2>
-    <p class="mt-4 max-w-[600px] text-[17px] leading-relaxed text-muted">
+<div>
+  <div class="section-wide py-20">
+    <h2 class="h2-display">A dead end becomes a conversation.</h2>
+    <p class="lede mt-4">
       Over the limit, a caller gets a token and a link to the next request. Come back, ask
       again, get a real answer.
     </p>
 
     <div class="mt-11 flex flex-wrap items-stretch gap-5">
-      <div class="min-w-0 flex-[1_1_440px] overflow-hidden rounded-[10px] border border-[var(--color-code-bg)]" style="background: var(--color-code-bg);">
-        <div class="mono border-b px-[22px] py-3 text-xs" style="border-color: var(--color-code-border); background: var(--color-code-header); color: #b9b6ae;">
-          real response · POST /api/accessgate/evaluate
-        </div>
-        <pre class="mono m-0 overflow-x-auto px-[22px] py-5 text-[13px] leading-[1.75]" style="color: var(--color-code-text);"><code><span style="color:var(--color-code-punc)">{"{"}</span>
-  <span style="color:var(--color-code-key)">"outcome"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-amber)">"Queued"</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="color:var(--color-code-key)">"callerType"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-text)">"Agent"</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="color:var(--color-code-key)">"granted"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-coral)">false</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="color:var(--color-code-key)">"leaseToken"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-violet)">"061F6A05…70CA"</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="color:var(--color-code-key)">"reason"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-text)">"rate_limit_exceeded"</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="background:rgba(62,230,196,.10); border-radius:3px"><span style="color:var(--color-code-key)">"links"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-punc)">{"{"}</span>
-    <span style="color:var(--color-code-key)">"poll"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-punc)">{"{"}</span> <span style="color:var(--color-code-key)">"href"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-mint)">"/api/accessgate/poll"</span><span style="color:var(--color-code-punc)">,</span> <span style="color:var(--color-code-key)">"method"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-text)">"POST"</span> <span style="color:var(--color-code-punc)">{"}"}</span>
-  <span style="color:var(--color-code-punc)">{"}"}</span></span>
-<span style="color:var(--color-code-punc)">{"}"}</span></code></pre>
-      </div>
+      <figure class="m-0 min-w-0 flex-[1_1_440px]">
+        <figcaption class="mono mb-3 text-xs text-neutral">real response · POST /api/accessgate/evaluate</figcaption>
+        <pre class="code-block mono"><code><span class="tok-punc">{"{"}</span>
+  <span class="tok-key">"outcome"</span><span class="tok-punc">:</span> <span class="tok-amber">"Queued"</span><span class="tok-punc">,</span>
+  <span class="tok-key">"callerType"</span><span class="tok-punc">:</span> <span class="tok-text">"Agent"</span><span class="tok-punc">,</span>
+  <span class="tok-key">"granted"</span><span class="tok-punc">:</span> <span class="tok-coral">false</span><span class="tok-punc">,</span>
+  <span class="tok-key">"leaseToken"</span><span class="tok-punc">:</span> <span class="tok-violet">"061F6A05…70CA"</span><span class="tok-punc">,</span>
+  <span class="tok-key">"reason"</span><span class="tok-punc">:</span> <span class="tok-text">"rate_limit_exceeded"</span><span class="tok-punc">,</span>
+  <span class="tok-hl"><span class="tok-key">"links"</span><span class="tok-punc">:</span> <span class="tok-punc">{"{"}</span>
+    <span class="tok-key">"poll"</span><span class="tok-punc">:</span> <span class="tok-punc">{"{"}</span> <span class="tok-key">"href"</span><span class="tok-punc">:</span> <span class="tok-mint">"/api/accessgate/poll"</span><span class="tok-punc">,</span> <span class="tok-key">"method"</span><span class="tok-punc">:</span> <span class="tok-text">"POST"</span> <span class="tok-punc">{"}"}</span>
+  <span class="tok-punc">{"}"}</span></span>
+<span class="tok-punc">{"}"}</span></code></pre>
+      </figure>
 
-      <div class="min-w-0 flex-[1_1_440px] overflow-hidden rounded-[10px] border border-[var(--color-code-bg)]" style="background: var(--color-code-bg);">
-        <div class="mono border-b px-[22px] py-3 text-xs" style="border-color: var(--color-code-border); background: var(--color-code-header); color: #b9b6ae;">
-          62 s later · POST /api/accessgate/poll
-        </div>
-        <pre class="mono m-0 overflow-x-auto px-[22px] py-5 text-[13px] leading-[1.75]" style="color: var(--color-code-text);"><code><span style="color:var(--color-code-punc)">{"{"}</span>
-  <span style="color:var(--color-code-key)">"granted"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-mint)">true</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="color:var(--color-code-key)">"leaseToken"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-violet)">"ea530bb0…1c0c92"</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="color:var(--color-code-key)">"reason"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-text)">"poll_granted_within_rate_limit"</span><span style="color:var(--color-code-punc)">,</span>
-  <span style="background:rgba(62,230,196,.10); border-radius:3px"><span style="color:var(--color-code-key)">"links"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-punc)">{"{"}</span>
-    <span style="color:var(--color-code-key)">"complete"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-punc)">{"{"}</span> <span style="color:var(--color-code-key)">"href"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-mint)">"/api/accessgate/complete"</span><span style="color:var(--color-code-punc)">,</span> <span style="color:var(--color-code-key)">"method"</span><span style="color:var(--color-code-punc)">:</span> <span style="color:var(--color-code-text)">"POST"</span> <span style="color:var(--color-code-punc)">{"}"}</span>
-  <span style="color:var(--color-code-punc)">{"}"}</span></span>
-<span style="color:var(--color-code-punc)">{"}"}</span></code></pre>
-      </div>
+      <figure class="m-0 min-w-0 flex-[1_1_440px]">
+        <figcaption class="mono mb-3 text-xs text-neutral">62 s later · POST /api/accessgate/poll</figcaption>
+        <pre class="code-block mono"><code><span class="tok-punc">{"{"}</span>
+  <span class="tok-key">"granted"</span><span class="tok-punc">:</span> <span class="tok-mint">true</span><span class="tok-punc">,</span>
+  <span class="tok-key">"leaseToken"</span><span class="tok-punc">:</span> <span class="tok-violet">"ea530bb0…1c0c92"</span><span class="tok-punc">,</span>
+  <span class="tok-key">"reason"</span><span class="tok-punc">:</span> <span class="tok-text">"poll_granted_within_rate_limit"</span><span class="tok-punc">,</span>
+  <span class="tok-hl"><span class="tok-key">"links"</span><span class="tok-punc">:</span> <span class="tok-punc">{"{"}</span>
+    <span class="tok-key">"complete"</span><span class="tok-punc">:</span> <span class="tok-punc">{"{"}</span> <span class="tok-key">"href"</span><span class="tok-punc">:</span> <span class="tok-mint">"/api/accessgate/complete"</span><span class="tok-punc">,</span> <span class="tok-key">"method"</span><span class="tok-punc">:</span> <span class="tok-text">"POST"</span> <span class="tok-punc">{"}"}</span>
+  <span class="tok-punc">{"}"}</span></span>
+<span class="tok-punc">{"}"}</span></code></pre>
+      </figure>
     </div>
 
     <div class="mt-5 flex flex-wrap items-center gap-6 gap-y-6 rounded-[6px] border border-rule bg-paper-2 p-6 sm:p-8">
       <div class="min-w-0 flex-[1_1_320px]">
-        <div class="eyebrow" style="letter-spacing: 0.08em;">Transport</div>
+        <div class="label">Transport</div>
         <div class="mono mt-3.5 flex flex-wrap gap-2 text-[13px] font-medium text-ink">
-          <span class="rounded-[4px] px-3 py-2" style="background: var(--color-tag);">HTTP</span>
-          <span class="rounded-[4px] px-3 py-2" style="background: var(--color-tag);">gRPC</span>
+          <span class="pill-tag-lg">HTTP</span>
+          <span class="pill-tag-lg">gRPC</span>
         </div>
         <p class="mt-3.5 text-sm leading-relaxed text-muted">
           Call the gate over HTTP or gRPC — whichever your sidecar already speaks.
         </p>
       </div>
       <div class="min-w-0 flex-[1_1_320px]">
-        <div class="eyebrow" style="letter-spacing: 0.08em;">Native SDKs</div>
+        <div class="label">Native SDKs</div>
         <div class="mono mt-3.5 flex flex-wrap gap-2 text-[13px] font-medium text-ink">
-          <span class="rounded-[4px] px-3 py-2" style="background: var(--color-tag);">JavaScript</span>
-          <span class="rounded-[4px] px-3 py-2" style="background: var(--color-tag);">.NET</span>
+          <span class="pill-tag-lg">JavaScript</span>
+          <span class="pill-tag-lg">.NET</span>
         </div>
         <p class="mt-3.5 text-sm leading-relaxed text-muted">
           Available today for JavaScript and .NET.
