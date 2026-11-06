@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Added by code-review-graph
+.code-review-graph/
+
+# dotnet
+**/obj
+**/bin

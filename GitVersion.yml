@@ -1,0 +1,12 @@
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatchTag
+assembly-informational-format: "{InformationalVersion}"
+mode: ContinuousDeployment
+increment: Inherit
+tag-prefix: "[vV]"
+major-version-bump-message: 'type:\s?(breaking|major)'
+minor-version-bump-message: 'type:\s?(feature|minor)'
+patch-version-bump-message: 'type:\s?(fix|patch)'
+no-bump-message: 'type:\s?(none|skip|web|fix-ecosystem|feature-ecosystem|breaking-ecosystem|patch-ecosystem)'
+commit-message-incrementing: Enabled
+commit-date-format: "yyyy-MM-dd"
