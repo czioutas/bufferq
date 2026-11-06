@@ -90,6 +90,7 @@
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--color-ink);
+    text-decoration: none;
   }
 
   .btn {
@@ -124,6 +125,26 @@
     transition: color 180ms ease;
   }
   .nav-link:hover { color: var(--color-ink); }
+
+  .github-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: var(--color-paper-2);
+    border: 1px solid var(--color-rule);
+    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+    color: var(--color-ink);
+    text-decoration: none;
+    font: 600 13px/1 var(--font-body);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+  }
+  .github-badge:hover {
+    border-color: var(--color-line);
+    box-shadow: 0 2px 6px rgba(17, 17, 17, 0.08);
+  }
 
   .tile {
     border: 1px solid var(--color-rule);

@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 // Served as a GitHub Pages project page at czioutas.github.io/bufferq —
@@ -9,6 +10,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://czioutas.github.io',
   base: '/bufferq',
+  trailingSlash: 'always',
+
+  integrations: [sitemap()],
 
   vite: {
     plugins: [tailwindcss()]

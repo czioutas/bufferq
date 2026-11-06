@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://czioutas.github.io/bufferq/sitemap-index.xml
