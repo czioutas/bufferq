@@ -1,0 +1,141 @@
+/* Ported from code/Landing page-html — warm paper + mono palette, Inter/JetBrains Mono */
+@import "tailwindcss";
+
+@theme {
+  --color-paper:    #f5f3ef;
+  --color-paper-2:  #faf9f6;
+  --color-rule:     #dcd9d2;
+  --color-rule-2:   #e3e0d8;
+  --color-line:     #cdc9c0;
+  --color-tag:      #ebe8e1;
+  --color-neutral:  #6b6963;
+  --color-neutral-2: #8f8c85;
+  --color-muted:    #55534e;
+  --color-ink:      #111111;
+  --color-ink-2:    #2b2a27;
+  --color-ink-3:    #3a3935;
+
+  /* Status dots used in the request-flow diagram and outcome lists —
+     functional colours encoding outcomes, not the brand palette. */
+  --color-status-pass:  #9a978f;
+  --color-status-grant: #22a06b;
+  --color-status-queue: #e8920c;
+  --color-status-bill:  #d6409f;
+
+  /* Dark terminal code block + its syntax tokens */
+  --color-code-bg:     #141416;
+  --color-code-header: #1b1b1f;
+  --color-code-border: #2a2a30;
+  --color-code-text:   #e9e7e1;
+  --color-code-key:    #a8a59d;
+  --color-code-punc:   #8b8982;
+  --color-code-amber:  #ffb454;
+  --color-code-mint:   #3ee6c4;
+  --color-code-coral:  #ff6b81;
+  --color-code-violet: #b69cff;
+
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-card: 6px;
+  --radius-pill: 999px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .section {
+    @apply mx-auto max-w-5xl px-6;
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-neutral);
+  }
+
+  .wordmark {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--color-ink);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 22px;
+    border-radius: var(--radius-card);
+    font: 500 15px/1 var(--font-body);
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 180ms ease;
+  }
+  .btn-dark {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border: 1px solid var(--color-ink);
+  }
+  .btn-dark:hover { background: #2c2c2c; }
+  .btn-line {
+    background: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-line);
+  }
+  .btn-line:hover { background: var(--color-tag); }
+
+  .nav-link {
+    color: var(--color-muted);
+    text-decoration: none;
+    font: 400 14px/1 var(--font-body);
+    transition: color 180ms ease;
+  }
+  .nav-link:hover { color: var(--color-ink); }
+
+  .tile {
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-card);
+    background: var(--color-paper-2);
+  }
+
+  .pill-tag {
+    padding: 7px 10px;
+    border-radius: 4px;
+    background: var(--color-tag);
+    font: 400 12px/1 var(--font-mono);
+    color: var(--color-ink-3);
+  }
+}

@@ -1,0 +1,300 @@
+---
+---
+
+<div id="flow" style="background:#f5f3ef;border-top:1px solid #dcd9d2;border-bottom:1px solid #dcd9d2;overflow-x:auto">
+<div style="width:1440px;margin:0 auto">
+
+<div role="img" aria-label="Animated diagram. Four clients send requests to a sidecar gate in front of an API. Client A is under the limit and is admitted immediately. Client B is deferred with a token, waits, retries and is admitted. Client C retries too early, is rejected, waits for its token, then is admitted. Client D gets a 402 Payment Required, pays the invoice, retries with the receipt and is admitted." style="position:relative;width:1440px;height:900px;overflow:hidden;--k:1;background:radial-gradient(rgba(60,58,50,.12) 1px,transparent 1.3px) 0 0/28px 28px,#f5f3ef;font-family:Inter,system-ui,sans-serif;color:#111">
+
+<!-- title -->
+<div style="position:absolute;left:64px;top:56px;font:500 12px/16px 'JetBrains Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:#6b6963">Sidecar gate · request flow</div>
+<div style="position:absolute;left:64px;top:80px;font-size:42px;line-height:52px;font-weight:700;letter-spacing:-.045em">Admit, defer, or bounce.</div>
+
+<!-- lanes -->
+<div class="lane" style="top:280px"></div>
+<div class="lane" style="top:410px"></div>
+<div class="lane" style="top:540px"></div>
+<div class="lane" style="top:670px"></div>
+
+<!-- gate slab -->
+<div style="position:absolute;left:482px;top:200px;width:36px;height:550px;border-radius:18px;overflow:hidden;box-sizing:border-box;background:linear-gradient(180deg,#1c1c20,#121214);box-shadow:0 14px 34px rgba(17,17,17,.22)"><div class="scan"></div></div>
+<div style="position:absolute;left:488px;top:278px;width:24px;height:4px;border-radius:2px;background:rgba(245,243,239,.85)"></div>
+<div style="position:absolute;left:488px;top:408px;width:24px;height:4px;border-radius:2px;background:rgba(245,243,239,.85)"></div>
+<div style="position:absolute;left:488px;top:538px;width:24px;height:4px;border-radius:2px;background:rgba(245,243,239,.85)"></div>
+<div style="position:absolute;left:488px;top:668px;width:24px;height:4px;border-radius:2px;background:rgba(245,243,239,.85)"></div>
+<div style="position:absolute;left:400px;top:166px;width:200px;text-align:center;font:500 12px/16px 'JetBrains Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:#111">Bouncer</div>
+<div style="position:absolute;left:400px;top:770px;width:200px;text-align:center;font:400 12px/16px 'JetBrains Mono',monospace;color:#6b6963">admit · defer · reject</div>
+
+<!-- API -->
+<div style="position:absolute;left:860px;top:200px;width:150px;height:550px;box-sizing:border-box;border-radius:6px;background:#faf9f6;border:1px solid #dcd9d2"></div>
+<div style="position:absolute;left:860px;top:222px;width:150px;text-align:center;font:500 12px/16px 'JetBrains Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:#55534e">Your API</div>
+<div style="position:absolute;left:855px;top:275px;width:10px;height:10px;border-radius:50%;background:#111;box-shadow:0 0 0 3px #f5f3ef"></div>
+<div style="position:absolute;left:855px;top:405px;width:10px;height:10px;border-radius:50%;background:#111;box-shadow:0 0 0 3px #f5f3ef"></div>
+<div style="position:absolute;left:855px;top:535px;width:10px;height:10px;border-radius:50%;background:#111;box-shadow:0 0 0 3px #f5f3ef"></div>
+<div style="position:absolute;left:855px;top:665px;width:10px;height:10px;border-radius:50%;background:#111;box-shadow:0 0 0 3px #f5f3ef"></div>
+
+<!-- clients -->
+<div style="position:absolute;left:98px;top:258px;width:44px;height:44px;box-sizing:border-box;border-radius:50%;display:flex;align-items:center;justify-content:center;font:500 15px/1 'JetBrains Mono',monospace;color:#111;background:#faf9f6;border:1px solid #bdb9af">A</div>
+<div style="position:absolute;left:98px;top:388px;width:44px;height:44px;box-sizing:border-box;border-radius:50%;display:flex;align-items:center;justify-content:center;font:500 15px/1 'JetBrains Mono',monospace;color:#111;background:#faf9f6;border:1px solid #bdb9af">B</div>
+<div style="position:absolute;left:98px;top:518px;width:44px;height:44px;box-sizing:border-box;border-radius:50%;display:flex;align-items:center;justify-content:center;font:500 15px/1 'JetBrains Mono',monospace;color:#111;background:#faf9f6;border:1px solid #bdb9af">C</div>
+<div style="position:absolute;left:98px;top:648px;width:44px;height:44px;box-sizing:border-box;border-radius:50%;display:flex;align-items:center;justify-content:center;font:500 15px/1 'JetBrains Mono',monospace;color:#111;background:#faf9f6;border:1px solid #bdb9af">D</div>
+
+<!-- lane captions -->
+<div style="position:absolute;left:162px;top:240px;font:400 13px/18px Inter,sans-serif;color:#6b6963;white-space:nowrap">Under the limit — straight through</div>
+<div style="position:absolute;left:162px;top:370px;font:400 13px/18px Inter,sans-serif;color:#6b6963;white-space:nowrap">Over the limit — token, wait, retry</div>
+<div style="position:absolute;left:162px;top:500px;font:400 13px/18px Inter,sans-serif;color:#6b6963;white-space:nowrap">Retries too early — bounced again</div>
+<div style="position:absolute;left:162px;top:630px;font:400 13px/18px Inter,sans-serif;color:#6b6963;white-space:nowrap">Payment required — pay, then return</div>
+
+<!-- token tickets -->
+<div class="t tk tkb" style="position:absolute;left:226px;top:432px;width:128px;height:44px;box-sizing:border-box;padding:8px 10px;border-radius:4px;background:#f3f0fd;border:1px solid rgba(106,70,214,.45);box-shadow:0 2px 6px rgba(17,17,17,.06)">
+<div style="display:flex;justify-content:space-between;font:500 10px/14px 'JetBrains Mono',monospace"><span style="color:#6a46d6;letter-spacing:.14em">TOKEN</span><span style="color:#3a3935">retry in 4s</span></div>
+<div style="margin-top:7px;height:4px;border-radius:2px;background:rgba(17,17,17,.10);overflow:hidden"><div class="t fill fb" style="height:100%;border-radius:2px;background:#6a46d6"></div></div>
+</div>
+<div class="t tk tkc" style="position:absolute;left:226px;top:562px;width:128px;height:44px;box-sizing:border-box;padding:8px 10px;border-radius:4px;background:#f3f0fd;border:1px solid rgba(106,70,214,.45);box-shadow:0 2px 6px rgba(17,17,17,.06)">
+<div style="display:flex;justify-content:space-between;font:500 10px/14px 'JetBrains Mono',monospace"><span style="color:#6a46d6;letter-spacing:.14em">TOKEN</span><span style="color:#3a3935">retry in 7s</span></div>
+<div style="margin-top:7px;height:4px;border-radius:2px;background:rgba(17,17,17,.10);overflow:hidden"><div class="t fill fc" style="height:100%;border-radius:2px;background:#6a46d6"></div></div>
+</div>
+
+<!-- invoice and receipt (402) -->
+<div class="t tk tkd" style="position:absolute;left:226px;top:692px;width:128px;height:44px;box-sizing:border-box;padding:8px 10px;border-radius:4px;background:#fdf0f9;border:1px solid rgba(176,42,138,.45);box-shadow:0 2px 6px rgba(17,17,17,.06)">
+<div style="display:flex;justify-content:space-between;font:500 10px/14px 'JetBrains Mono',monospace"><span style="color:#b02a8a;letter-spacing:.14em">INVOICE</span><span style="color:#3a3935">402 · pay</span></div>
+<div style="margin-top:7px;font:400 10px/14px 'JetBrains Mono',monospace;color:#55534e">inv_77d · awaiting payment</div>
+</div>
+<div class="t tk tke" style="position:absolute;left:226px;top:692px;width:128px;height:44px;box-sizing:border-box;padding:8px 10px;border-radius:4px;background:#edf7f2;border:1px solid rgba(11,122,86,.45);box-shadow:0 2px 6px rgba(17,17,17,.06)">
+<div style="display:flex;justify-content:space-between;font:500 10px/14px 'JetBrains Mono',monospace"><span style="color:#0b7a56;letter-spacing:.14em">PAID</span><span style="color:#3a3935">receipt r_2b8</span></div>
+<div style="margin-top:7px;height:4px;border-radius:2px;background:#0b7a56"></div>
+</div>
+
+<!-- pulses: clients -->
+<div class="t ring blue s3" style="left:100px;top:260px"></div>
+<div class="t ring blue s8" style="left:100px;top:390px"></div>
+<div class="t ring blue s13" style="left:100px;top:520px"></div>
+<div class="t ring violet s52" style="left:100px;top:390px"></div>
+<div class="t ring violet s46" style="left:100px;top:520px"></div>
+<div class="t ring violet s70" style="left:100px;top:520px"></div>
+<div class="t ring blue s18" style="left:100px;top:650px"></div>
+<div class="t ring pink s55" style="left:100px;top:650px"></div>
+<div class="t ring mint s50" style="left:270px;top:650px"></div>
+
+<!-- pulses: gate -->
+<div class="t ring mint s14" style="left:480px;top:260px"></div>
+<div class="t ring amber s195" style="left:480px;top:390px"></div>
+<div class="t ring mint s60" style="left:480px;top:390px"></div>
+<div class="t ring amber s245" style="left:480px;top:520px"></div>
+<div class="t ring coral s54" style="left:480px;top:520px"></div>
+<div class="t ring mint s78" style="left:480px;top:520px"></div>
+<div class="t ring pink s29" style="left:480px;top:650px"></div>
+<div class="t ring mint s64" style="left:480px;top:650px"></div>
+
+<!-- pulses: API -->
+<div class="t ring mint s315" style="left:842px;top:260px"></div>
+<div class="t ring mint s755" style="left:842px;top:390px"></div>
+<div class="t ring mint s915" style="left:842px;top:520px"></div>
+<div class="t ring mint s78" style="left:842px;top:650px"></div>
+
+<!-- packets -->
+<div class="t pk pa" style="left:111px;top:271px"><div class="core"></div></div>
+<div class="t pk pb" style="left:111px;top:401px"><div class="core"></div></div>
+<div class="t pk pc" style="left:111px;top:531px"><div class="core"></div></div>
+<div class="t pk pd" style="left:111px;top:661px"><div class="core"></div></div>
+
+<!-- verdict chips at the gate -->
+<div class="t win chip mint s14" style="left:412px;top:222px;width:176px">ADMIT</div>
+<div class="t win chip amber s195" style="left:412px;top:352px;width:176px">DEFER · token issued</div>
+<div class="t win chip mint s60" style="left:412px;top:352px;width:176px">TOKEN OK · ADMIT</div>
+<div class="t win chip amber s245" style="left:412px;top:482px;width:176px">DEFER · token issued</div>
+<div class="t win chip coral s54" style="left:412px;top:482px;width:176px">TOO EARLY · 429</div>
+<div class="t win chip mint s78" style="left:412px;top:482px;width:176px">TOKEN OK · ADMIT</div>
+<div class="t win chip pink s29" style="left:394px;top:612px;width:212px">402 · PAYMENT REQUIRED</div>
+<div class="t win chip mint s64" style="left:412px;top:612px;width:176px">RECEIPT OK · ADMIT</div>
+
+<!-- responses at the API -->
+<div class="t win chip mint s315" style="left:884px;top:267px;width:92px">200 OK</div>
+<div class="t win chip mint s755" style="left:884px;top:397px;width:92px">200 OK</div>
+<div class="t win chip mint s915" style="left:884px;top:527px;width:92px">200 OK</div>
+<div class="t win chip mint s78" style="left:884px;top:657px;width:92px">200 OK</div>
+
+<!-- log -->
+<div style="position:absolute;left:1056px;top:200px;width:320px;height:550px;box-sizing:border-box;border-radius:6px;background:#faf9f6;border:1px solid #dcd9d2;padding:20px 22px">
+<div style="display:flex;align-items:center;gap:10px;height:24px;margin-bottom:12px;font:500 12px/16px 'JetBrains Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#6b6963"><span class="live" style="display:block;width:7px;height:7px;border-radius:50%;background:#22a06b"></span><span>Gate log</span></div>
+<div class="lg l1 blue"><i></i><span>A  GET /v1/orders</span></div>
+<div class="lg l2 blue"><i></i><span>B  POST /v1/invoices</span></div>
+<div class="lg l3 blue"><i></i><span>C  POST /v1/invoices</span></div>
+<div class="lg l4 mint"><i></i><span>A  admitted · under limit</span></div>
+<div class="lg l14 blue"><i></i><span>D  POST /v1/render</span></div>
+<div class="lg l5 amber"><i></i><span>B  deferred · token t_4f1 · 4s</span></div>
+<div class="lg l6 amber"><i></i><span>C  deferred · token t_9ac · 7s</span></div>
+<div class="lg l15 pink"><i></i><span>D  402 · payment required</span></div>
+<div class="lg l7 mint"><i></i><span>A  200 OK</span></div>
+<div class="lg l16 mint"><i></i><span>D  paid · receipt r_2b8</span></div>
+<div class="lg l8 violet"><i></i><span>C  retries early with t_9ac</span></div>
+<div class="lg l9 coral"><i></i><span>C  429 · token not ready</span></div>
+<div class="lg l10 mint"><i></i><span>B  retries t_4f1 · valid · admitted</span></div>
+<div class="lg l17 mint"><i></i><span>D  retries r_2b8 · admitted</span></div>
+<div class="lg l11 mint"><i></i><span>B  200 OK</span></div>
+<div class="lg l12 mint"><i></i><span>C  retries t_9ac · valid · admitted</span></div>
+<div class="lg l18 mint"><i></i><span>D  200 OK</span></div>
+<div class="lg l13 mint"><i></i><span>C  200 OK</span></div>
+</div>
+
+<!-- legend -->
+<div style="position:absolute;left:64px;top:830px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;font:400 13px/16px Inter,sans-serif;color:#55534e">
+<div style="display:flex;align-items:center;gap:10px"><span style="display:block;width:10px;height:10px;border-radius:50%;background:#0b7a56"></span><span>Admit</span></div>
+<div style="display:flex;align-items:center;gap:10px"><span style="display:block;width:10px;height:10px;border-radius:50%;background:#9a5a00"></span><span>Defer, token issued</span></div>
+<div style="display:flex;align-items:center;gap:10px"><span style="display:block;width:10px;height:10px;border-radius:50%;background:#6a46d6"></span><span>Retry with token</span></div>
+<div style="display:flex;align-items:center;gap:10px"><span style="display:block;width:10px;height:10px;border-radius:50%;background:#c0213b"></span><span>Reject</span></div>
+<div style="display:flex;align-items:center;gap:10px"><span style="display:block;width:10px;height:10px;border-radius:50%;background:#b02a8a"></span><span>Payment required (402)</span></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<style>
+.t{animation-duration:calc(18s*var(--k,1));animation-iteration-count:infinite;animation-fill-mode:both;animation-timing-function:cubic-bezier(.4,.05,.25,1)}
+.mint{color:#0b7a56}.amber{color:#9a5a00}.coral{color:#c0213b}.violet{color:#6a46d6}.blue{color:#2b2a27}.pink{color:#b02a8a}
+
+/* one-shot pulses, placed in the loop by their delay */
+.win{animation-name:win;opacity:0}
+.ring{animation-name:ring;opacity:0;position:absolute;width:40px;height:40px;border-radius:50%;border:2px solid currentColor;box-sizing:border-box;pointer-events:none}
+.chip{position:absolute;height:26px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:4px;font:500 12px/1 'JetBrains Mono',monospace;letter-spacing:.04em;white-space:nowrap;background:color-mix(in srgb,currentColor 9%,#faf9f6);border:1px solid color-mix(in srgb,currentColor 50%,transparent);box-shadow:0 2px 6px rgba(17,17,17,.08)}
+
+/* start times, as a share of the 18s loop */
+.s3{animation-delay:calc(.54s*var(--k,1))}
+.s8{animation-delay:calc(1.44s*var(--k,1))}
+.s13{animation-delay:calc(2.34s*var(--k,1))}
+.s14{animation-delay:calc(2.52s*var(--k,1))}
+.s195{animation-delay:calc(3.51s*var(--k,1))}
+.s245{animation-delay:calc(4.41s*var(--k,1))}
+.s315{animation-delay:calc(5.67s*var(--k,1))}
+.s46{animation-delay:calc(8.28s*var(--k,1))}
+.s52{animation-delay:calc(9.36s*var(--k,1))}
+.s54{animation-delay:calc(9.72s*var(--k,1))}
+.s60{animation-delay:calc(10.8s*var(--k,1))}
+.s70{animation-delay:calc(12.6s*var(--k,1))}
+.s755{animation-delay:calc(13.59s*var(--k,1))}
+.s78{animation-delay:calc(14.04s*var(--k,1))}
+.s915{animation-delay:calc(16.47s*var(--k,1))}
+.s18{animation-delay:calc(3.24s*var(--k,1))}
+.s29{animation-delay:calc(5.22s*var(--k,1))}
+.s50{animation-delay:calc(9s*var(--k,1))}
+.s55{animation-delay:calc(9.9s*var(--k,1))}
+.s64{animation-delay:calc(11.52s*var(--k,1))}
+
+.pk{position:absolute;width:18px;height:18px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px #faf9f6,0 4px 12px rgba(17,17,17,.22);opacity:0}
+.core{position:absolute;left:6px;top:6px;width:6px;height:6px;border-radius:50%;background:#fff;opacity:.92}
+.pa{animation-name:pa}.pb{animation-name:pb}.pc{animation-name:pc}.pd{animation-name:pd}
+
+.tk{animation-name:tk;opacity:0}
+.tkb{animation-name:tkb}.tkc{animation-name:tkc}.tkd{animation-name:tkd}.tke{animation-name:tke}
+.fill{transform-origin:left center;transform:scaleX(0);animation-timing-function:linear}
+.fb{animation-name:fb}.fc{animation-name:fc}
+
+.lane{position:absolute;left:142px;width:718px;height:1px;background:linear-gradient(90deg,rgba(60,58,50,.34) 6px,transparent 6px) 0 0/14px 1px repeat-x;animation:flow calc(1.4s*var(--k,1)) linear infinite}
+.scan{position:absolute;left:0;top:0;width:100%;height:110px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.16),transparent);animation:scan calc(3.6s*var(--k,1)) linear infinite}
+.live{animation:live calc(2s*var(--k,1)) ease-in-out infinite}
+
+.lg{display:flex;align-items:center;gap:10px;height:25px;font:400 12px/1 'JetBrains Mono',monospace;white-space:nowrap;opacity:0;animation-duration:calc(18s*var(--k,1));animation-iteration-count:infinite;animation-fill-mode:both;animation-timing-function:ease-out}
+.lg i{display:block;width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.lg span{color:#2b2a27}
+.l1{animation-name:lg1}.l2{animation-name:lg2}.l3{animation-name:lg3}.l4{animation-name:lg4}.l5{animation-name:lg5}.l6{animation-name:lg6}.l7{animation-name:lg7}.l8{animation-name:lg8}.l9{animation-name:lg9}.l10{animation-name:lg10}.l11{animation-name:lg11}.l12{animation-name:lg12}.l13{animation-name:lg13}.l14{animation-name:lg14}.l15{animation-name:lg15}.l16{animation-name:lg16}.l17{animation-name:lg17}.l18{animation-name:lg18}
+
+@keyframes flow{to{background-position:14px 0}}
+@keyframes scan{from{transform:translateY(-110px)}to{transform:translateY(560px)}}
+@keyframes live{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes win{0%,1%{opacity:0;transform:translateY(6px) scale(.96)}2.5%,14%{opacity:1;transform:none}16.5%,100%{opacity:0;transform:translateY(-4px)}}
+@keyframes ring{0%{opacity:0;transform:scale(.4)}.4%{opacity:.9;transform:scale(.4)}5%{opacity:0;transform:scale(2.6)}100%{opacity:0;transform:scale(2.6)}}
+
+@keyframes pa{
+0%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}
+3%{opacity:1;color:#2b2a27;transform:translateX(0) scale(1)}
+14%{opacity:1;color:#2b2a27;transform:translateX(350px) scale(1)}
+17%{opacity:1;color:#0b7a56;transform:translateX(380px) scale(1)}
+31.5%{opacity:1;color:#0b7a56;transform:translateX(745px) scale(1)}
+33%{opacity:0;color:#0b7a56;transform:translateX(765px) scale(2.2)}
+100%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}}
+
+@keyframes pb{
+0%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}
+8%{opacity:1;color:#2b2a27;transform:translateX(0) scale(1)}
+19.5%{opacity:1;color:#2b2a27;transform:translateX(350px) scale(1)}
+21%{opacity:1;color:#9a5a00;transform:translateX(334px) scale(1)}
+28%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1)}
+34%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1.18)}
+40%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1)}
+46%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1.18)}
+50%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1)}
+52%{opacity:1;color:#6a46d6;transform:translateX(170px) scale(1)}
+60%{opacity:1;color:#6a46d6;transform:translateX(350px) scale(1)}
+63%{opacity:1;color:#0b7a56;transform:translateX(380px) scale(1)}
+75.5%{opacity:1;color:#0b7a56;transform:translateX(745px) scale(1)}
+77%{opacity:0;color:#0b7a56;transform:translateX(765px) scale(2.2)}
+100%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}}
+
+@keyframes pc{
+0%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}
+13%{opacity:1;color:#2b2a27;transform:translateX(0) scale(1)}
+24.5%{opacity:1;color:#2b2a27;transform:translateX(350px) scale(1)}
+26%{opacity:1;color:#9a5a00;transform:translateX(334px) scale(1)}
+33%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1)}
+37%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1.18)}
+41%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1)}
+46%{opacity:1;color:#6a46d6;transform:translateX(170px) scale(1)}
+54%{opacity:1;color:#6a46d6;transform:translateX(350px) scale(1)}
+54.4%{opacity:1;color:#c0213b;transform:translateX(350px) scale(1)}
+55.2%{opacity:1;color:#c0213b;transform:translateX(338px) scale(1)}
+56%{opacity:1;color:#c0213b;transform:translateX(354px) scale(1)}
+56.8%{opacity:1;color:#c0213b;transform:translateX(344px) scale(1)}
+57.4%{opacity:1;color:#c0213b;transform:translateX(350px) scale(1)}
+63%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1)}
+69%{opacity:1;color:#9a5a00;transform:translateX(170px) scale(1.18)}
+70%{opacity:1;color:#6a46d6;transform:translateX(170px) scale(1)}
+78%{opacity:1;color:#6a46d6;transform:translateX(350px) scale(1)}
+81%{opacity:1;color:#0b7a56;transform:translateX(380px) scale(1)}
+91.5%{opacity:1;color:#0b7a56;transform:translateX(745px) scale(1)}
+93%{opacity:0;color:#0b7a56;transform:translateX(765px) scale(2.2)}
+100%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}}
+
+@keyframes pd{
+0%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}
+18%{opacity:1;color:#2b2a27;transform:translateX(0) scale(1)}
+29%{opacity:1;color:#2b2a27;transform:translateX(350px) scale(1)}
+30.5%{opacity:1;color:#b02a8a;transform:translateX(334px) scale(1)}
+37%{opacity:1;color:#b02a8a;transform:translateX(170px) scale(1)}
+41%{opacity:1;color:#b02a8a;transform:translateX(170px) scale(1.18)}
+45%{opacity:1;color:#b02a8a;transform:translateX(170px) scale(1)}
+49%{opacity:1;color:#b02a8a;transform:translateX(170px) scale(1.18)}
+50%{opacity:1;color:#b02a8a;transform:translateX(170px) scale(1)}
+55%{opacity:1;color:#b02a8a;transform:translateX(170px) scale(1)}
+64%{opacity:1;color:#b02a8a;transform:translateX(350px) scale(1)}
+67%{opacity:1;color:#0b7a56;transform:translateX(380px) scale(1)}
+78%{opacity:1;color:#0b7a56;transform:translateX(745px) scale(1)}
+79.5%{opacity:0;color:#0b7a56;transform:translateX(765px) scale(2.2)}
+100%{opacity:0;color:#2b2a27;transform:translateX(0) scale(.4)}}
+
+@keyframes tkb{0%,21%{opacity:0;transform:translateY(8px)}22.5%,60.5%{opacity:1;transform:none}62.5%,100%{opacity:0;transform:translateY(-4px)}}
+@keyframes tkc{0%,26%{opacity:0;transform:translateY(8px)}27.5%,79%{opacity:1;transform:none}81%,100%{opacity:0;transform:translateY(-4px)}}
+@keyframes tkd{0%,30%{opacity:0;transform:translateY(8px)}31.5%,49%{opacity:1;transform:none}50.5%,100%{opacity:0;transform:translateY(-4px)}}
+@keyframes tke{0%,49.5%{opacity:0;transform:translateY(8px)}51%,65%{opacity:1;transform:none}67%,100%{opacity:0;transform:translateY(-4px)}}
+@keyframes fb{0%,28%{transform:scaleX(0)}52%,99%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+@keyframes fc{0%,33%{transform:scaleX(0)}70%,99%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+
+@keyframes lg1{0%,3%{opacity:0;transform:translateX(-6px)}4.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg2{0%,8%{opacity:0;transform:translateX(-6px)}9.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg3{0%,13%{opacity:0;transform:translateX(-6px)}14.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg4{0%,14%{opacity:0;transform:translateX(-6px)}15.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg5{0%,19.5%{opacity:0;transform:translateX(-6px)}21%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg6{0%,24.5%{opacity:0;transform:translateX(-6px)}26%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg7{0%,31.5%{opacity:0;transform:translateX(-6px)}33%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg8{0%,54%{opacity:0;transform:translateX(-6px)}55.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg9{0%,55%{opacity:0;transform:translateX(-6px)}56.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg10{0%,60%{opacity:0;transform:translateX(-6px)}61.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg11{0%,75.5%{opacity:0;transform:translateX(-6px)}77%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg12{0%,78%{opacity:0;transform:translateX(-6px)}79.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg13{0%,91.5%{opacity:0;transform:translateX(-6px)}93%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg14{0%,18%{opacity:0;transform:translateX(-6px)}19.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg15{0%,29%{opacity:0;transform:translateX(-6px)}30.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg16{0%,50%{opacity:0;transform:translateX(-6px)}51.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg17{0%,64%{opacity:0;transform:translateX(-6px)}65.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes lg18{0%,79%{opacity:0;transform:translateX(-6px)}80.5%,96%{opacity:1;transform:none}98%,100%{opacity:0}}
+</style>

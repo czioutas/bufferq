@@ -1,0 +1,63 @@
+---
+const cards = [
+  {
+    tag: "Agent traffic",
+    title: "Autonomous agents don't behave like your other traffic",
+    body: "Tool-call fan-outs fire five to thirty parallel requests in under fifty milliseconds, with near-zero dwell time between a response and the next dependent call. A static per-IP limiter can't tell that apart from an attack — it just drops things.",
+    points: [
+      "Classifies the caller from request signals (Agent, StandardApi, Human, Unknown)",
+      "Fingerprints repeat callers internally, never exposed to the caller",
+      "Everything else passes through untouched — no evaluation, no record",
+    ],
+  },
+  {
+    tag: "API keys",
+    title: "Any caller can get a key with a real limit attached",
+    body: "Issue a key, attach a requests-per-minute policy, and bufferq enforces it — atomically, under concurrency, with no race between the request that got through and the one that didn't. Callers that are over the limit get a token back, not a dead end.",
+    points: [
+      "Fixed per-minute windows — a window resets, it doesn't just keep rolling forward",
+      "A denied request gets a poll token, not just a 429 and silence",
+      'The caller asks "can I come in now?" and gets a real answer',
+    ],
+  },
+];
+---
+
+<div class="border-b border-rule">
+  <div class="section py-24" style="max-width: 1120px;">
+    <div class="eyebrow">What it solves</div>
+    <h2
+      class="mt-5 font-bold tracking-tight text-ink"
+      style="font-size: clamp(32px, 4.4vw, 46px); line-height: 1.08; letter-spacing: -0.04em;"
+    >
+      Two different problems, one gate
+    </h2>
+    <p class="mt-4 max-w-[600px] text-[17px] leading-relaxed text-muted">
+      Both are live in bufferq today — the same classification and policy engine, pointed at
+      different traffic.
+    </p>
+
+    <div class="mt-11 flex flex-wrap gap-5">
+      {
+        cards.map((c) => (
+          <div class="min-w-0 flex-[1_1_440px] rounded-[6px] border border-rule bg-paper-2 p-8">
+            <div class="flex items-center justify-between">
+              <span class="eyebrow" style="letter-spacing: 0.08em;">{c.tag}</span>
+              <span aria-hidden="true" class="block h-[7px] w-[7px] rounded-full" style="background: var(--color-status-grant);" />
+            </div>
+            <h3 class="mt-4.5 text-2xl font-semibold leading-snug tracking-tight text-ink">{c.title}</h3>
+            <p class="mt-3.5 text-[15px] leading-relaxed text-muted">{c.body}</p>
+            <div class="mt-6 flex flex-col gap-3 border-t pt-5 text-sm leading-relaxed text-ink-2" style="border-color: var(--color-rule-2);">
+              {c.points.map((p) => (
+                <div class="flex gap-3">
+                  <span class="mono" style="color: var(--color-neutral-2);">—</span>
+                  <span>{p}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

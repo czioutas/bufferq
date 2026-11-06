@@ -1,0 +1,32 @@
+---
+const tags = [
+  "no proxy",
+  "no DNS changes",
+  "<10 ms per evaluation",
+  "402 + HATEOAS native",
+];
+---
+
+<div class="px-6 py-24 text-center sm:py-28">
+  <div class="eyebrow">Sidecar middleware for APIs</div>
+  <h1
+    class="mx-auto mt-7 font-bold tracking-tight text-ink"
+    style="font-size: clamp(46px, 8vw, 84px); line-height: 1.03; letter-spacing: -0.045em;"
+  >
+    A bouncer<br /><span style="color:#6f6d68">for your API.</span>
+  </h1>
+  <p class="mx-auto mt-8 max-w-[680px] text-lg leading-relaxed text-muted">
+    bufferq runs as a sidecar middleware next to your API — no proxy, no DNS
+    changes. It works out who's actually calling: human, script, or autonomous
+    agent. Then it decides to let them through, grant them a slot, or queue them
+    with a token to come back. 402 native and HATEOAS native for better
+    understanding from agents.
+  </p>
+  <div class="mt-9 flex flex-wrap justify-center gap-3">
+    <a class="btn btn-dark" href="#">Get started</a>
+    <a class="btn btn-line" href="#flow">See the flow</a>
+  </div>
+  <div class="mt-9 flex flex-wrap justify-center gap-2">
+    {tags.map((t) => <span class="pill-tag">{t}</span>)}
+  </div>
+</div>
